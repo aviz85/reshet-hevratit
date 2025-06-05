@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>רשת חברתית</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Auth Section -->
+        <div id="auth-section" class="auth-container">
+            <div class="auth-card">
+                <h1>רשת חברתית</h1>
+                <div id="login-form">
+                    <h2>התחברות</h2>
+                    <input type="email" id="login-email" placeholder="אימייל">
+                    <input type="password" id="login-password" placeholder="סיסמה">
+                    <button onclick="login()">התחבר</button>
+                    <p>אין לך חשבון? <a href="#" onclick="showSignup()">הירשם כאן</a></p>
+                </div>
+                
+                <div id="signup-form" style="display: none;">
+                    <h2>הרשמה</h2>
+                    <input type="text" id="signup-name" placeholder="שם מלא">
+                    <input type="email" id="signup-email" placeholder="אימייל">
+                    <input type="password" id="signup-password" placeholder="סיסמה">
+                    <button onclick="signup()">הירשם</button>
+                    <p>יש לך חשבון? <a href="#" onclick="showLogin()">התחבר כאן</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main App Section -->
+        <div id="main-section" style="display: none;">
+            <header class="header">
+                <h1>רשת חברתית</h1>
+                <div class="user-info">
+                    <span id="user-name"></span>
+                    <button onclick="logout()">התנתק</button>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <!-- Post Creation -->
+                <div class="post-creator">
+                    <textarea id="post-content" placeholder="מה עובר עליך?"></textarea>
+                    <button onclick="createPost()">פרסם</button>
+                </div>
+
+                <!-- Posts Feed -->
+                <div id="posts-feed" class="posts-feed">
+                    <!-- Posts will be loaded here -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
