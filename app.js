@@ -8,8 +8,21 @@ const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // Global variables
 let currentUser = null;
 
+// Function to set random placeholder
+function setRandomPlaceholder() {
+    const placeholders = ['איך אתה מרגיש?', 'על מה אתה חושב?', 'מה נשמע?'];
+    const randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+    const postContent = document.getElementById('post-content');
+    if (postContent) {
+        postContent.placeholder = randomPlaceholder;
+    }
+}
+
 // Initialize app
 document.addEventListener('DOMContentLoaded', async () => {
+    // Set random placeholder for post content
+    setRandomPlaceholder();
+
     // Check if user is already logged in
     const { data: { session } } = await supabase.auth.getSession();
     if (session) {
@@ -118,6 +131,9 @@ function showMainApp() {
     // Update user info
     const userName = currentUser.user_metadata?.full_name || currentUser.email;
     document.getElementById('user-name').textContent = userName;
+    
+    // Set random placeholder when showing main app
+    setRandomPlaceholder();
 }
 
 function showMessage(message, type) {
